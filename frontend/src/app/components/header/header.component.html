@@ -1,0 +1,73 @@
+<div class="container mx-auto">
+<!--  <div class="flex justify-center">-->
+    <div class="flex justify-between items-center">
+      <a [routerLink]="['/']"><img src="assets/transparent-background-logo-01-01.png" alt="Logo Image" class="logo-image"></a>
+
+
+      <div class="flex items-center">
+
+        <div class="radio-button-group">
+          <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'all'">
+            <input type="radio" class="radio-button-group__input" value="all" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
+            Toate
+          </label>
+          <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'male'">
+            <input type="radio" class="radio-button-group__input" value="male" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
+            Barbati
+          </label>
+          <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'female'">
+            <input type="radio" class="radio-button-group__input" value="female" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
+            Femei
+          </label>
+        </div>
+
+        <div class="mr-6">
+          <nz-input-group [nzSuffix]="showSearchDelete ? suffixIconClose : suffixIconSearch">
+            <input type="text" nz-input [(ngModel)]="searchString" (ngModelChange)="handleSearchStringChange($event)" placeholder="Caută" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <i nz-icon nzType="search"></i>
+          </ng-template>
+          <ng-template #suffixIconClose>
+            <i nz-icon nzType="close" (click)="resetSearchString()"></i>
+          </ng-template>
+        </div>
+
+        <ng-container *ngIf="cartData$ | async as cartData">
+        <a nz-dropdown  [routerLink]="['/cart']" [nzDropdownMenu]="cartMenu" class="ml-2 inline-flex">
+            <nz-badge [nzCount]="cartData.length">
+              <i nz-icon nzType="shopping-cart" class="mr-2"></i>
+            </nz-badge>
+        </a>
+          <nz-dropdown-menu #cartMenu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item *ngFor="let item of cartData">
+              <a [routerLink]="['/product', item.product.id]">
+                <img [src]="item.product.images[0]" alt="Product Image" class="cart-item-image">
+              </a>
+              <span class="cart-text">{{ item.product.title }} x {{ item.quantity }} Mărime: {{ item.size }}</span>
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+        </ng-container>
+        <a nz-dropdown [nzDropdownMenu]="menu" class="ml-6 inline-flex">
+          <i nz-icon nzType="menu"></i>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <ng-container *ngIf="isLoggedIn$ | async; else notAuthenticated">
+              <li nz-menu-item [routerLink]="['/']">Home</li>
+              <li nz-menu-item [routerLink]="['/profile']">Profilul meu</li>
+              <li nz-menu-item [routerLink]="['/orders']">Istoric comenzi</li>
+              <li nz-menu-item (click)="logout()" nzDanger>Delogare</li>
+            </ng-container>
+            <ng-template #notAuthenticated>
+              <li nz-menu-item [routerLink]="['/']">Home</li>
+              <li nz-menu-item [routerLink]="['/login']">Logare</li>
+            </ng-template>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+    </div>
+<!--  </div>-->
+</div>

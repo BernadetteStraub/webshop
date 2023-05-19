@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><strong class="cart-title">Coșul meu</strong></h1>
+  <div *ngFor="let item of cartItems$ | async" class="cart-item">
+    <img [src]="item.product.images[0]" width="100" height="100" />
+    <span>{{ item.product.title }}<br>
+      Mărime: {{ item.size }}<br>
+      Cantitate: {{ item.quantity }}</span>
+    <button class="remove-button" nz-button nzType="primary" (click)="removeFromCart(item)">Şterge</button>
+  </div>
+  <div class="buttons">
+    <button nz-button (click)="proceedToCheckout()">Finalizare comandă</button>
+    <button nz-button (click)="emptyCart()">Golește coșul</button>
+  </div>
+</div>

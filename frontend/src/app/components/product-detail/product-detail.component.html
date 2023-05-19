@@ -1,0 +1,96 @@
+<div class="container">
+  <div *ngIf="product$ | async as product" class="product-detail">
+    <div class="carousel-container">
+      <nz-carousel #carousel class="custom-carousel" [nzEffect]="'fade'">
+        <div nz-carousel-content *ngFor="let image of product.images">
+          <img [src]="image" (click)="carousel.next()" alt="Product image" class="product-image" />
+        </div>
+      </nz-carousel>
+    </div>
+    <div class="product-info">
+      <div class="price-container mb-3">
+        <h1><strong class="product-title">{{ product.title }}</strong></h1>
+      </div>
+
+      <p>{{ product.description }}</p>
+      <div class="price-container my-5">
+        <strong class="product-price">{{ product.price | currency: "RON" }}</strong>
+      </div>
+<!--      <div class="product-table"></div>-->
+      <ng-container *ngIf="product.gender == 'female'">
+        <table>
+          <tr>
+            <th>Mărime</th>
+            <th>35</th>
+            <th>36</th>
+            <th>37</th>
+            <th>38</th>
+            <th>39</th>
+            <th>40</th>
+            <th>41</th>
+          </tr>
+          <tr>
+            <td>Cm picior</td>
+            <td>22,5</td>
+            <td>23</td>
+            <td>23,5</td>
+            <td>24</td>
+            <td>24,5</td>
+            <td>25,5</td>
+            <td>26</td>
+          </tr>
+        </table>
+      </ng-container>
+      <ng-container *ngIf="product.gender == 'male'">
+        <table>
+          <tr>
+            <th>Mărime</th>
+            <th>40</th>
+            <th>41</th>
+            <th>42</th>
+            <th>43</th>
+            <th>44</th>
+            <th>45</th>
+          </tr>
+          <tr>
+            <td>Cm picior</td>
+            <td>25,5</td>
+            <td>26</td>
+            <td>26,5</td>
+            <td>27</td>
+            <td>27,5</td>
+            <td>28</td>
+          </tr>
+        </table>
+      </ng-container>
+
+      <div class="mb-6">
+        <span><strong>Durata de livrare</strong> 3-5 zile</span>
+      </div>
+
+      <nz-select nzPlaceHolder="Alege mărimea" [(ngModel)]="selectedSize">
+        <nz-option *ngFor="let size of product.sizes" [nzValue]="size" [nzLabel]="size"></nz-option>
+      </nz-select>
+      <div>
+        <nz-input-number [nzMin]="1" [nzMax]="10" [nzStep]="1" class="mr-3"></nz-input-number>
+        <button nz-button nzType="primary" class="add-button" (click)="addToCart(product)">Adaugă în coş</button>
+      </div>
+
+      <div class="my-6">
+        <span><i nz-icon nzType="customer-service" nzTheme="outline"></i>Ai nevoie de ajutor?<strong><span class="phone"> 074 5433 295</span></strong></span>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+  <div class="card">
+    <div><span nz-icon nzType="safety-certificate" nzTheme="outline" class="card-icon"></span> Doar produse de calitate</div>
+    <div><span nz-icon nzType="sync" nzTheme="outline" class="card-icon"></span> Schimb mărime gratuit</div>
+    <div><span nz-icon nzType="export" nzTheme="outline" class="card-icon"></span> Returnare ușoară și rapidă</div>
+    <div><img src="assets/ro-icon.png" alt="Ro Icon" class="ro-icon"> Fabricat în Romania</div>
+  </div>
+</div>

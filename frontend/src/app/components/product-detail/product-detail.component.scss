@@ -1,0 +1,68 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.product-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .carousel-container {
+    width: 50%;
+    margin-right: 16px;
+  }
+
+  .product-info {
+    width: 50%;
+
+    .product-title {
+      color: #833c06;
+    }
+
+    .product-price {
+      color: #0a7b25;
+    }
+  }
+
+  i {
+    display: inline-flex;
+    margin-right: 5px;
+    color: #0a7b25;
+  }
+
+  .add-button {
+    border: none;
+    margin-top: 16px;
+    background-color: #0a7b25;
+  }
+
+  table, td, th {
+    border: 1px solid;
+    text-align: center
+  }
+
+  th {
+    background-color: whitesmoke;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .phone {
+    color: #0a7b25;
+  }
+
+  nz-select {
+    width: 150px;
+  }
+
+
+
+}
+

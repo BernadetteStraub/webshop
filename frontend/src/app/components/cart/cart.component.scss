@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cart-item img {
+  margin-right: 1rem;
+}
+
+.cart-title {
+  color: #0a7b25;
+}
+
+.remove-button {
+  border: none;
+  margin-left: 2rem;
+  background-color: #0a7b25;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: #0a7b25;
+}
+
+

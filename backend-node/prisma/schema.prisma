@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum UserType {
+  LOCAL
+  REMOTE
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  firstName   String?
+  lastName    String?
+  email       String    @unique
+  password    String
+  age         Int?
+  dateOfBirth DateTime?
+  role        UserRole  @default(USER)
+  photoUrl    String?
+  type        UserType  @default(LOCAL)
+  address     Address[]
+  orders      Order[]
+}
+
+model Address {
+  id      Int     @id @default(autoincrement())
+  street  String
+  line2   String?
+  city    String
+  state   String
+  country String  @default("RO")
+  zipCode String
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  Int
+}
+
+model Product {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  gender      String @default("female")
+  price       Float
+  sizes       Json
+  images      Json
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id        Int        @id @default(autoincrement())
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  orderItems     OrderItem[]
+  createdAt DateTime   @default(now())
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  product   Product @relation(fields: [productId], references: [id])
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   Int
+  productId Int
+  quantity  Int
+  size      Int
+}

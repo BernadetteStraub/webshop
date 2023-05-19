@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Comenzile dumneavoastră</h2>
+  <div *ngIf="orders$ | async as orders; else noOrders">
+    <div *ngFor="let order of orders" class="order-card">
+      <h4>Comanda #{{ order.id }}</h4>
+
+      <p>Data: {{ order.createdAt | date }}</p>
+      <ul>
+        <li *ngFor="let item of order.items">
+          {{ item.title }} - Mărime: {{ item.size }} - Cantitate: {{ item.quantity}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ng-template #noOrders>
+    <p>Nu aveți nici o comandă.</p>
+  </ng-template>
+</div>

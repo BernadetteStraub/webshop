@@ -1,0 +1,23 @@
+<div class="container mx-auto mt-2">
+  <nz-row nzGutter="16">
+    <ng-container *ngFor="let product of products$ | async">
+      <nz-col nzSpan="6">
+        <div class="product">
+          <nz-carousel #carousel class="custom-carousel" nzEffect="fade" nzAutoPlaySpeed="1000">
+            <ng-container *ngFor="let image of product.images">
+              <div nz-carousel-content>
+                <img class="carousel-image" (click)="carousel.next()" [src]="image" alt="product-image" width="100%">
+              </div>
+            </ng-container>
+          </nz-carousel>
+          <div class="product-info">
+            <a [routerLink]="['/product', product.id]" >
+              <h3 class="product-name">{{ product.title }}</h3>
+            </a>
+            <p class="product-price">{{ product.price | currency: "RON" }}</p>
+          </div>
+        </div>
+      </nz-col>
+    </ng-container>
+  </nz-row>
+</div>

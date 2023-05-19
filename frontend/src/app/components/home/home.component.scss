@@ -1,0 +1,22 @@
+.product {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  //box-shadow: 0 2px 8px #d5e6d6;
+  margin-bottom: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.product-info {
+  margin-top: 8px;
+}
+
+.product-name:hover {
+  color: #833c06;
+  background-color: transparent;
+}
+
+.product-price {
+  color: #0a7b25;
+}

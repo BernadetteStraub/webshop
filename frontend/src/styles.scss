@@ -1,0 +1,84 @@
+@import '~swiper/swiper-bundle.min.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.bg-light-brown {
+  background-color: #d2b48c;
+}
+
+.carousel-image {
+  max-width: 100%; /* Limit the image width to not exceed the container */
+  max-height: 300px; /* Set a maximum height for the image */
+  object-fit: contain; /* Maintain the aspect ratio of the image */
+  margin: 0 auto; /* Center the image horizontally */
+  display: block; /* Make the image a block element to apply margin */
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 15px;
+  padding: 20px 30px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  //box-shadow: 0 2px 8px #d5e6d6;
+
+
+}
+
+.card-icon {
+  display: inline-flex;
+  font-size: 17px;
+  //color: #833c06;
+  margin-right: 7px;
+}
+
+.ro-icon {
+  display: inline-flex;
+  height: 30px;
+  margin-right: 7px;
+}
+
+.ant-btn:hover {
+  border-color: #0a7b25;
+  color: #0a7b25;
+}
+
+.ant-btn-primary:hover {
+  border: none;
+  color: white;
+  background-color: #0a7b25;
+}
+
+.ant-input:focus {
+  border-color: #0a7b25;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 2px rgba(98, 199, 72, 0.2);
+  box-shadow: 0 0 0 2px rgba(98, 199, 72, 0.2);
+}
+
+.ant-input:hover {
+  border-color: #0a7b25;
+  outline: 0;
+}
+
+.ant-input-number:focus {
+  border-color: #0a7b25;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 2px rgba(98, 199, 72, 0.2);
+  box-shadow: 0 0 0 2px rgba(98, 199, 72, 0.2);
+}
+
+.ant-input-number:hover {
+  border-color: #0a7b25;
+  outline: 0;
+}
