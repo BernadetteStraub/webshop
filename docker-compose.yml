@@ -1,36 +1,33 @@
 version: '3.8'
-
 services:
-  postgres:
-    image: postgres:15
-    container_name: webshop-postgres
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+  backend:
+    restart: always
+    build:
+      context: ./backend-node
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://root:root_password@db:5432/webshop
+      JWT_SECRET: my_jwt_secret
+  db:
+    image: postgres
+    restart: always
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root_password
       POSTGRES_DB: webshop
-    ports:
-      - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-  backend:
-    build: ./backend-node
-    container_name: backend
-    environment:
-     - DATABASE_URL="postgresql://root:root_password@localhost:5432/webshop?schema=public"
-     - JWT_SECRET=my_jwt_secret
-    depends_on:
-      - postgres
-    ports:
-      - "3000:3000"
-
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    depends_on:
-      - backend
-    ports:
-      - "4200:80"
-
+      - postgres_data:/var/lib/postgresql/data
 volumes:
-  postgres-data:
+  postgres_data:
