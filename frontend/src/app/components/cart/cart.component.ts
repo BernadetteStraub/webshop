@@ -1,16 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartItem, CartService} from "../../services/cart.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
+import {map, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   cartItems$ = this.cartService.getCartData();
+  subs: Subscription[] = [];
 
-  constructor(private cartService: CartService, private router: Router) {
+  constructor(private cartService: CartService, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -21,7 +24,20 @@ export class CartComponent implements OnInit {
   }
 
   proceedToCheckout(): void {
-    this.router.navigate(['/checkout']);
+    this.subs.push(
+    this.authService.currentUser$.pipe(
+      map(user => {
+        if (user) {
+          this.router.navigate(['/checkout']);
+        } else {
+          this.router.navigate(['/login']);
+        }
+      })
+    ).subscribe());
+  }
+
+  ngOnDestroy() {
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 
   emptyCart(): void {

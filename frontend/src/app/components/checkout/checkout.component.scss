@@ -2,6 +2,8 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 1rem;
+  flex-direction: column;
+  align-items: center;
 }
 
 .address-card {
@@ -11,11 +13,16 @@
   margin-bottom: 1rem;
 }
 
-h3 {
-  margin-top: 0;
-}
+//h3 {
+//  margin-top: 0;
+//}
 
 .checkout-button {
   border: none;
   background-color: #0a7b25;
 }
+
+.checkout-title {
+  color: #0a7b25;
+}
+

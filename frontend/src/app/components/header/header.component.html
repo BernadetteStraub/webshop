@@ -39,7 +39,7 @@
               <i nz-icon nzType="shopping-cart" class="mr-2"></i>
             </nz-badge>
         </a>
-          <nz-dropdown-menu #cartMenu="nzDropdownMenu">
+        <nz-dropdown-menu #cartMenu="nzDropdownMenu">
           <ul nz-menu>
             <li nz-menu-item *ngFor="let item of cartData">
               <a [routerLink]="['/product', item.product.id]">

@@ -72,8 +72,9 @@
         <nz-option *ngFor="let size of product.sizes" [nzValue]="size" [nzLabel]="size"></nz-option>
       </nz-select>
       <div>
-        <nz-input-number [nzMin]="1" [nzMax]="10" [nzStep]="1" class="mr-3"></nz-input-number>
-        <button nz-button nzType="primary" class="add-button" (click)="addToCart(product)">Adaugă în coş</button>
+        <nz-input-number [nzMin]="1" [nzMax]="10" [nzStep]="1" [(ngModel)]="quantity" class="mr-3"></nz-input-number>
+        <button nz-button nzType="primary" *ngIf="selectedSize" class="add-button" (click)="addToCart(product)">Adaugă în coş</button>
+        <button nz-button nzType="primary" *ngIf="!selectedSize" style="margin-top: 16px" [disabled]="!selectedSize">Adaugă în coş</button>
       </div>
 
       <div class="my-6">

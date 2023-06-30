@@ -2,6 +2,9 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .order-card {
@@ -11,6 +14,10 @@
   margin-bottom: 1rem;
 }
 
-h4 {
-  margin-top: 0;
+//h4 {
+//  margin-top: 0;
+//}
+
+.orders-title {
+  color: #0a7b25;
 }

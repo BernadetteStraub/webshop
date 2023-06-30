@@ -38,6 +38,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
 import {NzImageModule} from "ng-zorro-antd/image";
 import {NzRadioModule} from "ng-zorro-antd/radio";
+import { RegistrationComponent } from './components/registration/registration.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {NzRadioModule} from "ng-zorro-antd/radio";
     UserProfileComponent,
     CheckoutComponent,
     OrdersComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

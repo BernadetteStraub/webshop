@@ -14,6 +14,7 @@ export class ProductDetailComponent  {
   product$: Observable<ProductResponse | undefined>
 
   selectedSize: number | undefined;
+  quantity: number = 1;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private cartService: CartService) {
     this.product$ = this.route.params.pipe(
@@ -25,7 +26,7 @@ export class ProductDetailComponent  {
     if (this.selectedSize) {
       this.cartService.addToCart(
         product,
-        1,
+        this.quantity,
         this.selectedSize
       );
     }
