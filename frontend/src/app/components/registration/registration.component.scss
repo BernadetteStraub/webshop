@@ -1,0 +1,16 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.update-button:enabled {
+  border: none;
+  background-color: #0a7b25;
+}
+
+.update-title {
+  color: #0a7b25;
+}

@@ -5,7 +5,6 @@ import {generateToken} from '../../utils/generate-token';
 import {UserResponse} from "./model/user-response";
 
 import {getUserById} from "./user-repository";
-import logger from "../../utils/logger";
 
 
 export const getAll = async (req: Request, res: Response<UserResponse[]>) => {

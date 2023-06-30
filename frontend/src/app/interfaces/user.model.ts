@@ -10,10 +10,6 @@ export interface UserRequest {
   lastName: string;
   email: string;
   password: string;
-  dateOfBirth: string;
-  role: string;
-  type: string;
-  photoUrl: string;
   addresses: AddressRequest[];
 }
 

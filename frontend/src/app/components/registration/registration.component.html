@@ -1,1 +1,83 @@
-<p>registration works!</p>
+<div class="profile-container">
+  <h1 class="text-center m-5"><strong>Registrare</strong></h1>
+  <form nz-form [nzLayout]="'vertical'" (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+    <nz-form-item>
+      <nz-form-label [nzFor]="'email'">Email</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="email" id="email" type="text" placeholder="Email" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'password'">Parola</nz-form-label>
+      <nz-form-control>
+        <nz-input-group [nzSuffix]="suffixTemplate">
+          <input
+            [type]="passwordVisible ? 'text' : 'password'"
+            nz-input
+            formControlName="password"
+            id="password"
+            placeholder="Parola"
+          />
+        </nz-input-group>
+        <ng-template #suffixTemplate>
+      <span
+        nz-icon
+        [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+        (click)="passwordVisible = !passwordVisible"
+      ></span>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'firstName'">Prenume</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="firstName" id="firstName" type="text" placeholder="First Name" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'lastName'">Nume</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="lastName" id="lastName" type="text" placeholder="Last Name" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'street'">Strada</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="street" id="street" type="text" placeholder="Address" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'line2'">Numărul</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="line2" id="line2" type="text" placeholder="Address" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'city'">Oraş</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="city" id="city" type="text" placeholder="Address" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'country'">Țara</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="country" id="country" type="text" placeholder="Address" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'state'">Județ</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="state" id="state" type="text" placeholder="Address" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzFor]="'zipCode'">Cod poştal</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="zipCode" id="zipCode" type="text" placeholder="Address" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <button nz-button nzType="primary" class="update-button" [nzLoading]="loading" [disabled]="!registrationForm.valid">Inregistrati-va!</button>
+    </nz-form-item>
+  </form>
+</div>

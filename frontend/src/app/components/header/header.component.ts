@@ -4,6 +4,7 @@ import {CartItem, CartService} from "../../services/cart.service";
 import {debounceTime, filter, map, Observable, Subscription, tap} from "rxjs";
 import {UntypedFormBuilder, UntypedFormControl} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private apiService: ApiService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {
     this.cartData$ = this.cartService.getCartData();
     this.isLoggedIn$ = this.authService.currentUser$.pipe(
@@ -47,6 +49,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.isMenuOpen = false;
+    this.router.navigate(['/']);
   }
 
 }

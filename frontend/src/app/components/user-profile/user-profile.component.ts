@@ -4,6 +4,7 @@ import {ApiService} from "../../services/api.service";
 import {AuthService} from "../../services/auth.service";
 import {filter} from "rxjs";
 import {UserResponse, UserUpdate} from "../../interfaces/user.model";
+import {NzNotificationService} from "ng-zorro-antd/notification";
 
 @Component({
   selector: 'app-user-profile',
@@ -15,7 +16,7 @@ export class UserProfileComponent implements OnInit {
   currentUser: UserResponse | null = null;
   loading = false;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private authService: AuthService, private notification: NzNotificationService) {
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -82,9 +83,11 @@ export class UserProfileComponent implements OnInit {
         (data) => {
           this.loading = false;
           this.authService.setCurrentUser(data);
+          this.notification.success('Success', 'Profile updated successfully');
         },
         (error) => {
           this.loading = false;
+          this.notification.error('Error', 'Profile update failed');
           console.error(error);
         }
       );

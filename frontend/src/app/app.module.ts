@@ -16,6 +16,8 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+
 registerLocaleData(en);
 
 // Other imports...
@@ -77,7 +79,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     ReactiveFormsModule,
     NzInputNumberModule,
     NzImageModule,
-    NzRadioModule
+    NzRadioModule,
+    NzNotificationModule
   ],
   providers: [ApiService,
     {
