@@ -6,12 +6,13 @@ import {OrderRequest, OrderResponse} from "../interfaces/order.model";
 import {AuthRequest, AuthResponse, UserRequest, UserResponse, UserUpdate} from "../interfaces/user.model";
 import {AuthService} from "./auth.service";
 import jwtDecode from "jwt-decode";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000'; // Replace with your API URL
+  private readonly apiUrl = environment.apiUrl;
   private searchSubject: BehaviorSubject<string> = new BehaviorSubject("");
   private genderSubject: BehaviorSubject<string> = new BehaviorSubject("all");
   private searchObservable$ = this.searchSubject.asObservable();

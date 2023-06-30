@@ -83,11 +83,11 @@ export class UserProfileComponent implements OnInit {
         (data) => {
           this.loading = false;
           this.authService.setCurrentUser(data);
-          this.notification.success('Success', 'Profile updated successfully');
+          this.notification.success('Succes', 'Profilul a fost actualizat cu succes');
         },
         (error) => {
           this.loading = false;
-          this.notification.error('Error', 'Profile update failed');
+          this.notification.error('Error', 'Profilul nu a putut fi actualizat');
           console.error(error);
         }
       );

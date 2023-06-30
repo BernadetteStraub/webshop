@@ -13,7 +13,7 @@
           </label>
           <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'male'">
             <input type="radio" class="radio-button-group__input" value="male" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
-            Barbati
+            Bărbați
           </label>
           <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'female'">
             <input type="radio" class="radio-button-group__input" value="female" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
@@ -40,7 +40,7 @@
             </nz-badge>
         </a>
         <nz-dropdown-menu #cartMenu="nzDropdownMenu">
-          <ul nz-menu>
+          <ul *ngIf="cartData && cartData.length > 0" nz-menu>
             <li nz-menu-item *ngFor="let item of cartData">
               <a [routerLink]="['/product', item.product.id]">
                 <img [src]="item.product.images[0]" alt="Product Image" class="cart-item-image">
@@ -64,7 +64,7 @@
             <ng-template #notAuthenticated>
               <li nz-menu-item [routerLink]="['/']">Home</li>
               <li nz-menu-item [routerLink]="['/login']">Logare</li>
-              <li nz-menu-item [routerLink]="['/register']">Inregistrare</li>
+              <li nz-menu-item [routerLink]="['/register']">Înregistrare</li>
             </ng-template>
           </ul>
         </nz-dropdown-menu>
