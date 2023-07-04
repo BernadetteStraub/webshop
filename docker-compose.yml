@@ -1,15 +1,6 @@
 version: '3.8'
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "4200:80"
-    depends_on:
-      - backend
   backend:
-    restart: always
     build:
       context: ./backend-node
       dockerfile: Dockerfile
@@ -20,14 +11,24 @@ services:
     environment:
       DATABASE_URL: postgresql://root:root_password@db:5432/webshop
       JWT_SECRET: my_jwt_secret
+    command: sh -c "npx prisma migrate deploy && node dist/app.js"
+    networks:
+      - my-network
   db:
     image: postgres
+    container_name: db
     restart: always
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root_password
       POSTGRES_DB: webshop
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+        - my-network
 volumes:
-  postgres_data:
+  postgres-data:
+networks:
+  my-network:
