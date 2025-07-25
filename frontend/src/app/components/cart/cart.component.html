@@ -1,13 +1,19 @@
-<div class="container">
-  <h1><strong class="cart-title">Coșul meu</strong></h1>
-  <div *ngFor="let item of cartItems$ | async" class="cart-item">
-    <img [src]="item.product.images[0]" width="100" height="100" />
-    <span>{{ item.product.title }}<br>
+<div class="flex flex-col items-center p-8">
+  <h1><strong class="text-green-700">Coșul meu</strong></h1>
+  
+  <div *ngFor="let item of cartItems$ | async" class="flex items-center justify-between w-full max-w-2xl mb-4">
+    <img [src]="item.product.images[0]" width="100" height="100" class="flex-shrink-0" />
+    <span class="flex-1 mx-4">
+      {{ item.product.title }}<br>
       Mărime: {{ item.size }}<br>
-      Cantitate: {{ item.quantity }}</span>
-    <button class="remove-button" nz-button nzType="primary" (click)="removeFromCart(item)">Şterge</button>
+      Cantitate: {{ item.quantity }}
+    </span>
+    <button class="border-none bg-green-700 hover:bg-green-800 flex-shrink-0" 
+            nz-button nzType="primary" 
+            (click)="removeFromCart(item)">Şterge</button>
   </div>
-  <div class="buttons">
+  
+  <div class="flex gap-4 mt-4 text-green-700">
     <button nz-button (click)="proceedToCheckout()">Finalizare comandă</button>
     <button nz-button (click)="emptyCart()">Golește coșul</button>
   </div>

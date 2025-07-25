@@ -1,57 +1,73 @@
-<div class="container mx-auto">
-<!--  <div class="flex justify-center">-->
+<div class="block bg-white shadow-sm p-2.5">
+  <div class="container mx-auto">
     <div class="flex justify-between items-center">
-      <a [routerLink]="['/']"><img src="assets/transparent-background-logo-01-01.png" alt="Logo Image" class="logo-image"></a>
-
-
+      <a [routerLink]="['/']">
+        <img 
+          src="assets/transparent-background-logo-01-01.png" 
+          alt="Logo Image" 
+          class="h-20 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-70">
+      </a>
+      
       <div class="flex items-center">
-
-        <div class="radio-button-group">
-          <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'all'">
-            <input type="radio" class="radio-button-group__input" value="all" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
+        <div class="flex border border-gray-300 rounded h-8 mr-8">
+          <label class="inline-flex items-center border-r border-gray-300 px-2 last:border-r-transparent"
+                 [ngClass]="{
+                   'bg-green-700 text-white -my-px': displayGender === 'all',
+                   'bg-transparent text-gray-400': displayGender !== 'all'
+                 }">
+            <input type="radio" class="hidden" value="all" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
             Toate
           </label>
-          <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'male'">
-            <input type="radio" class="radio-button-group__input" value="male" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
+          <label class="inline-flex items-center border-r border-gray-300 px-2 last:border-r-transparent"
+                 [ngClass]="{
+                   'bg-green-700 text-white -my-px': displayGender === 'male',
+                   'bg-transparent text-gray-400': displayGender !== 'male'
+                 }">
+            <input type="radio" class="hidden" value="male" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
             Bărbați
           </label>
-          <label class="radio-button-group__label" [class.radio-button-group__label--selected]="displayGender === 'female'">
-            <input type="radio" class="radio-button-group__input" value="female" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
+          <label class="inline-flex items-center border-r border-gray-300 px-2 last:border-r-transparent"
+                 [ngClass]="{
+                   'bg-green-700 text-white -my-px': displayGender === 'female',
+                   'bg-transparent text-gray-400': displayGender !== 'female'
+                 }">
+            <input type="radio" class="hidden" value="female" [(ngModel)]="displayGender" (ngModelChange)="handleGenderChange($event)"/>
             Femei
           </label>
         </div>
-
+        
         <div class="mr-6">
           <nz-input-group [nzSuffix]="showSearchDelete ? suffixIconClose : suffixIconSearch">
             <input type="text" nz-input [(ngModel)]="searchString" (ngModelChange)="handleSearchStringChange($event)" placeholder="Caută" />
           </nz-input-group>
           <ng-template #suffixIconSearch>
-            <i nz-icon nzType="search"></i>
+            <i nz-icon nzType="search" class="inline-flex text-base text-green-700"></i>
           </ng-template>
           <ng-template #suffixIconClose>
-            <i nz-icon nzType="close" (click)="resetSearchString()"></i>
+            <i nz-icon nzType="close" (click)="resetSearchString()" class="inline-flex text-base text-green-700"></i>
           </ng-template>
         </div>
-
+        
         <ng-container *ngIf="cartData$ | async as cartData">
-        <a nz-dropdown  [routerLink]="['/cart']" [nzDropdownMenu]="cartMenu" class="ml-2 inline-flex">
+          <a nz-dropdown [routerLink]="['/cart']" [nzDropdownMenu]="cartMenu" class="ml-2 inline-flex">
             <nz-badge [nzCount]="cartData.length">
-              <i nz-icon nzType="shopping-cart" class="mr-2"></i>
+              <i nz-icon nzType="shopping-cart" class="mr-2 inline-flex text-base text-green-700"></i>
             </nz-badge>
-        </a>
-        <nz-dropdown-menu #cartMenu="nzDropdownMenu">
-          <ul *ngIf="cartData && cartData.length > 0" nz-menu>
-            <li nz-menu-item *ngFor="let item of cartData">
-              <a [routerLink]="['/product', item.product.id]">
-                <img [src]="item.product.images[0]" alt="Product Image" class="cart-item-image">
-              </a>
-              <span class="cart-text">{{ item.product.title }} x {{ item.quantity }} Mărime: {{ item.size }}</span>
-            </li>
-          </ul>
-        </nz-dropdown-menu>
+          </a>
+          <nz-dropdown-menu #cartMenu="nzDropdownMenu">
+            <ul *ngIf="cartData && cartData.length > 0" nz-menu>
+              <li nz-menu-item *ngFor="let item of cartData">
+                <a [routerLink]="['/product', item.product.id]">
+                  <img [src]="item.product.images[0]" alt="Product Image" class="w-12 h-12 object-cover mr-2">
+                </a>
+                <span class="text-green-700">{{ item.product.title }} x {{ item.quantity }} Mărime: {{ item.size }}</span>
+              </li>
+            </ul>
+          </nz-dropdown-menu>
         </ng-container>
+        
         <a nz-dropdown [nzDropdownMenu]="menu" class="ml-6 inline-flex">
-          <i nz-icon nzType="menu"></i>
+          <i nz-icon nzType="menu" class="inline-flex text-base text-green-700"></i>
         </a>
         <nz-dropdown-menu #menu="nzDropdownMenu">
           <ul nz-menu nzSelectable>
@@ -70,5 +86,5 @@
         </nz-dropdown-menu>
       </div>
     </div>
-<!--  </div>-->
+  </div>
 </div>

@@ -1,5 +1,5 @@
-<div class="login-container">
-  <h1 class="text-center mb-4"><strong class="login-title">Intră în cont</strong></h1>
+<div class="flex flex-col max-w-sm mx-auto my-8 p-8 shadow-md rounded">
+  <h1 class="text-center mb-4"><strong class="text-green-700">Intră în cont</strong></h1>
   <form nz-form [nzLayout]="'vertical'" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
     <nz-form-item>
       <nz-form-label [nzFor]="'email'">E-mail</nz-form-label>
@@ -14,7 +14,10 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <button nz-button nzType="primary" class="login-button" [nzLoading]="loading" [disabled]="!loginForm.valid">Logare</button>
+      <button nz-button nzType="primary" 
+              class="enabled:border-none enabled:bg-green-700 enabled:hover:bg-green-800" 
+              [nzLoading]="loading" 
+              [disabled]="!loginForm.valid">Logare</button>
     </nz-form-item>
   </form>
 </div>

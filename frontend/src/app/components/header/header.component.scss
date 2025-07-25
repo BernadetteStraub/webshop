@@ -1,82 +1,77 @@
-:host {
-  display: block;
-  background-color: white;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+// :host {
+//   display: block;
+//   background-color: white;
+//   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+//   padding: 10px;
 
-}
+// }
 
-.logo-image {
-  height: 80px;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 0.3s ease-in-out;
-  opacity: 1;
-}
+// .logo-image {
+//   height: 80px;
+//   -webkit-transition: opacity 1s ease-in-out;
+//   -moz-transition: opacity 1s ease-in-out;
+//   -ms-transition: opacity 1s ease-in-out;
+//   -o-transition: opacity 1s ease-in-out;
+//   transition: opacity 0.3s ease-in-out;
+//   opacity: 1;
+// }
 
-.logo-image:hover {
-  opacity: 0.7;
-}
+// .logo-image:hover {
+//   opacity: 0.7;
+// }
 
-.cart-item-image {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  margin-right: 8px;
-}
+// .cart-item-image {
+//   width: 50px;
+//   height: 50px;
+//   object-fit: cover;
+//   margin-right: 8px;
+// }
 
-.cart-text {
-  color: #0a7b25;
-}
+// .cart-text {
+//   color: #0a7b25;
+// }
 
-i {
-  display: inline-flex;
-  font-size: 17px;
-  color: #0a7b25;
-}
+// i {
+//   display: inline-flex;
+//   font-size: 17px;
+//   color: #0a7b25;
+// }
 
-.radio-label {
-  color: #0a7b25;
-}
+// .radio-label {
+//   color: #0a7b25;
+// }
 
-.radio-button-group {
-  display: flex;
-  border: 1px solid #d1d5db;
-  border-radius: 0.25rem;
-  height: 2rem;
-  margin-right: 2rem;
-}
+// .radio-button-group {
+//   display: flex;
+//   border: 1px solid #d1d5db;
+//   border-radius: 0.25rem;
+//   height: 2rem;
+//   margin-right: 2rem;
+// }
 
-.radio-button-group__label {
-  /* Center the content */
-  align-items: center;
-  display: inline-flex;
+// .radio-button-group__label {
+//   align-items: center;
+//   display: inline-flex;
 
-  border-right: 1px solid #d1d5db;
-  padding: 0.5rem;
+//   border-right: 1px solid #d1d5db;
+//   padding: 0.5rem;
 
-  /* For not selected radio */
-  background-color: transparent;
-  color: #ccc;
-}
+//   background-color: transparent;
+//   color: #ccc;
+// }
 
-.radio-button-group__label:last-child {
-  /* Remove the right border from the last label */
-  border-right-color: transparent;
-}
+// .radio-button-group__label:last-child {
+//   border-right-color: transparent;
+// }
 
-.radio-button-group__label--selected {
-  /* For selected radio */
-  background-color: #0a7b25;
-  color: #fff;
+// .radio-button-group__label--selected {
+//   background-color: #0a7b25;
+//   color: #fff;
 
-  margin-top: -1px;
-  margin-bottom: -1px;
-}
+//   margin-top: -1px;
+//   margin-bottom: -1px;
+// }
 
-.radio-button-group__input {
-  /* Hide it */
-  display: none;
-}
+// .radio-button-group__input {
+//   display: none;
+// }

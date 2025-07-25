@@ -1,6 +1,6 @@
-<div class="container">
-  <h2 class="mb-3"><strong class="checkout-title">Confirmă comanda</strong></h2>
-  <div *ngIf="user && user.addresses[0] as address" class="address-card">
+<div class="max-w-xl mx-auto p-4 flex-col items-center">
+  <h2 class="mb-3"><strong class="text-green-700">Confirmă comanda</strong></h2>
+  <div *ngIf="user && user.addresses[0] as address" class="bg-gray-100 rounded p-4 mb-4">
     <h3><strong>Adresa</strong></h3>
     <p>Strada: {{ address.street }}</p>
     <p *ngIf="address.line2">Numărul: {{ address.line2 }}</p>
@@ -8,5 +8,7 @@
     <p>Cod poştal: {{ address.zipCode }}</p>
     <p>{{ address.country }}</p>
   </div>
-  <button class="checkout-button" (click)="confirmOrder()" nz-button nzType="primary">Confirmă comanda</button>
+  <button class="border-none bg-green-700 hover:bg-green-800" 
+          (click)="confirmOrder()" 
+          nz-button nzType="primary">Confirmă comanda</button>
 </div>

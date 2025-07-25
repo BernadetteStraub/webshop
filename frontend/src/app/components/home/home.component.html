@@ -1,20 +1,20 @@
 <div class="container mx-auto mt-2">
-  <nz-row nzGutter="16">
+  <nz-row nzGutter="16" class="flex items-stretch">
     <ng-container *ngFor="let product of products$ | async">
-      <nz-col nzSpan="6">
-        <div class="product">
+      <nz-col nzSpan="6" class="flex">
+        <div class="bg-white rounded shadow-md mb-4 p-4 text-center flex flex-col w-full">
           <nz-carousel #carousel class="custom-carousel" nzEffect="fade" nzAutoPlaySpeed="1000">
             <ng-container *ngFor="let image of product.images">
               <div nz-carousel-content>
-                <img class="carousel-image" (click)="carousel.next()" [src]="image" alt="product-image" width="100%">
+                <img class="w-full" (click)="carousel.next()" [src]="image" alt="product-image">
               </div>
             </ng-container>
           </nz-carousel>
-          <div class="product-info">
-            <a [routerLink]="['/product', product.id]" >
-              <h3 class="product-name">{{ product.title }}</h3>
+          <div class="mt-auto pt-4">
+            <a [routerLink]="['/product', product.id]">
+              <h3 class="hover:text-orange-800 hover:bg-transparent transition-colors">{{ product.title }}</h3>
             </a>
-            <p class="product-price">{{ product.price | currency: "RON" }}</p>
+            <p class="text-green-700 font-bold">{{ product.price | currency: "RON" }}</p>
           </div>
         </div>
       </nz-col>
