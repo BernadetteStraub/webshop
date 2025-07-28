@@ -14,8 +14,8 @@ const app = express();
 app.use(cors({
     origin: [
       'http://localhost:4200',
-      'https://webshop-vert-three.vercel.app'  // Your frontend URL
-    ],
+      'https://webshop-vert-three.vercel.app',
+      'https://webshop-8d56.vercel.app'],
     credentials: true
   }));
 app.use(requestLoggerMiddleware);
