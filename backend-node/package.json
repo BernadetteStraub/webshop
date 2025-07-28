@@ -2,14 +2,15 @@
   "name": "backend-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.js",
+    "start": "node api/index.ts",
     "test": "jest",
     "lint": "eslint \"src/**/*.{js,ts}\"",
     "lint:fix": "eslint \"src/**/*.{js,ts}\" --fix",
-    "dev": "nodemon --exec ts-node --files --watch src src/app.ts"
+    "dev": "nodemon --exec ts-node --files --watch src src/index.ts",
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "author": "",

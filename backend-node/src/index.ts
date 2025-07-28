@@ -11,8 +11,13 @@ import { errorMiddleware } from './middleware/error';
 import { authMiddleware } from './middleware/auth';
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors({
+    origin: [
+      'http://localhost:4200',
+      'https://webshop-vert-three.vercel.app'  // Your frontend URL
+    ],
+    credentials: true
+  }));
 app.use(requestLoggerMiddleware);
 app.use(errorMiddleware);
 app.use(authMiddleware);
@@ -24,3 +29,4 @@ app.use('/order', orderRouter);
 app.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`);
 });
+export default app;
